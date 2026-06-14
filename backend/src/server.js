@@ -3,7 +3,7 @@ import notesRoutes from "./Routes/notesRoutes.js";
 
 const app = express();
 
-app.use("/api/notes")
+app.use("/api/notes" , notesRoutes);
 
 
 
