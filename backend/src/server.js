@@ -12,7 +12,7 @@ console.log(process.env.MONGO_URI); // Log the MongoDB URI to verify it's being 
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-connectDB();
+
 
 //middleware
 app.use(express.json());
@@ -28,7 +28,8 @@ app.use(rateLimiter);
 app.use("/api/notes" , notesRoutes);
 
 
-
-app.listen(PORT, () => {
-    console.log('Server is running....');
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log('Server is running....');
+    });
 });
